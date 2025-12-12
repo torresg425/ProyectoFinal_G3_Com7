@@ -1,0 +1,30 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Inicio {% endblock title %}
+
+{% block contenido %}
+<div class="container mt-4">
+    <h1 class="text-center">Esta es la página de Inicio</h1>
+
+    {% if user.is_authenticated %}
+        <p class="text-center mt-3">
+            Bienvenido, <strong>{{ user.username }}</strong>
+        </p>
+
+        {% if user.imagen %}
+            <div class="text-center">
+                <img src="{{ user.imagen.url }}" 
+                    alt="Foto de perfil"
+                    style="height:120px; width:120px; border-radius:50%; object-fit:cover;">
+            </div>
+        {% endif %}
+    {% else %}
+        <p class="text-center mt-4">
+            <a href="{% url 'apps.usuario:login' %}" class="btn btn-primary">
+                Iniciar sesión
+            </a>
+        </p>
+    {% endif %}
+</div>
+{% endblock contenido %}

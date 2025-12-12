@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+    {% for i in noticias %} 
+    
+        <br>
+        <li>{{ i.titulo }}</li>
+        <li>{{ i.subtitulo }}</li>
+        <li>{{ i.categoria }}</li>
+
+        <a id="boton_noticia" href="{% url 'apps.noticias:noticia_individual' i.id %}">Ingresa a esta noticia</a>
+
+        {% empty  %}
+        <h1>No hay registros</h1>
+    
+    {% endfor %}
+
+    <br>
+    <h1>Ahora estamos en otro html</h1>
+    <h1>donde estamos poniendo otro contenido</h1>
+
+{% endblock contenido %}
